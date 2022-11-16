@@ -12,12 +12,12 @@ left join track t on a.id = t.album_id
 group by album_name;
 
 
-
-select author_name from author a 
+select author_name  from author aut
+where aut.id not in
+(select a.id from author a 
 left join resultauthoralbum r  on a.id = r.author_id 
 left join album a2 on r.album_id = a2.id
-where a2.year_of_issue !='2020'
-group by author_name;
+where a2.year_of_issue = '2020') ;
 
 select compilation_name from compilation c
 left join resultcompilation r on c.id = r.compilation_id 
